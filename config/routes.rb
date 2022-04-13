@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  namespace :public do
+    get 'posts/index'
+    get 'posts/new'
+    get 'posts/show'
+    get 'posts/edit'
+  end
+  namespace :public do
+    get 'users/show'
+    get 'users/edit'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
