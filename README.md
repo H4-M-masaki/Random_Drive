@@ -1,24 +1,53 @@
-# README
+# Random Drive
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+外出先レビューサイト
 
-Things you may want to cover:
+お出かけ、外出、ドライブなどの目的地の候補がありすぎて決められない方
+家族や友人とお出かけする際に目的地が決まらない方たち為のサイトです。
 
-* Ruby version
+目的地の候補が多く自分で決められない方は
+自分が行きたい場所、行ってみたい場所を登録しておき、行先決定のボタンを押せば登録してある場所から
+ランダムに決めてくれます。
+また、行った場所の投稿ができ、ユーザー同士で共有することでも目的地を決める参考に出来ます。
 
-* System dependencies
 
-* Configuration
+実装予定機能<br>
+1.行きたい場所の登録<br>
+2.行った場所の投稿（日記のような感じ）<br>
+3.登録した行きたい場所でランダムに目的地を決めてくれる<br>
+4.検索機能、サイト内で観光地など検索できる<br>
 
-* Database creation
+### サイトテーマ
+外出先の目的地を決めてくれるレビューサイト
 
-* Database initialization
+### テーマを選んだ理由
+自分はドライブが好きですが、目的地を決めるのが苦手で目的なくドライブしてしまうこともあります。
+しかし、せっかくドライブするなら何か目的があった方が楽しめるかと思います。
+そこで自分みたいに決めるのが苦手な人のために、決めてくれるものがあればいいなと思い、このテーマにしました。
 
-* How to run the test suite
+お出かけやドライブが好きな方、色んな所へ行ってみたい方、行ったことのない場所に行きたい方
+目的地が決められない方
+そういった人たちが交流出来、外出の楽しさが増すようなサイトを目指します。
 
-* Services (job queues, cache servers, search engines, etc.)
+### ターゲットユーザ
+選択肢が多いとなかなか決められない優柔不断な人
+お出かけやドライブが好きな人
 
-* Deployment instructions
+### 主な利用シーン
+行きたい場所がたくさんあり、なかなか決められない時<br>
+友人や家族でお出かけをする際に、目的地が決まらない時<br>
+突発的にどこかに行きたい時<br>
 
-* ...
+## 設計書
+
+
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1oTr8Bdnt9_JlnQGCcgRIwZeHTGYcOiJCNS-UpvbhB_M/edit?usp=sharing
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
