@@ -14,6 +14,8 @@
 <h2>画像</h2>
 <%= attachment_image_tag @post, :image, format: 'jpeg', size: "300x300" %><br>
 
-<%= link_to '編集する', edit_public_post_path(@post.id) %><br>
-<%= link_to '削除する', public_post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？" %><br>
+<% if @post.user == current_user %>
+ <%= link_to '編集する', edit_public_post_path(@post.id) %><br>
+ <%= link_to '削除する', public_post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？" %><br>
+<% end %>
 <%= link_to '投稿一覧ページへ', public_posts_path %>
