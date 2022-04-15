@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'drives/new'
+    get 'drives/index'
+    get 'drives/edit'
+  end
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
@@ -29,7 +34,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
 
     resources :users, only: [:show, :edit, :updete, :create]
-    resources :posts, only: [:index, :new, :show, :edit, :destroy, :create]
+    resources :posts, only: [:index, :new, :show, :edit, :destroy, :create, :update]
 
   end
 

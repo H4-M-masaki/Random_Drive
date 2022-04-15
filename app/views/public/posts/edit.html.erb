@@ -2,3 +2,21 @@
 <p>Find me in app/views/public/posts/edit.html.erb</p>
 
 自身の投稿の編集画面　　削除機能も付ける
+
+
+<h1>投稿編集</h1>
+
+<%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
+
+ <%= f.text_field :title %>
+
+ <%= f.text_area :body %>
+
+ <%= f.attachment_field :image %>
+
+
+ <%= f.submit '更新' %>
+<% end %>
+
+
+<%= link_to '削除する', public_post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？" %><br>

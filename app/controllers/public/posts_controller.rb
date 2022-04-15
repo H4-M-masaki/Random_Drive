@@ -34,11 +34,20 @@ class Public::PostsController < ApplicationController
     redirect_to public_posts_path
   end
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to public_post_path
+    else
+      render :edit
+    end
+  end
+
 
 
   private
     def post_params
-      params.require(:post).permit(:text, :image)
+      params.require(:post).permit(:text, :image, :title, :body)
     end
 
 end
