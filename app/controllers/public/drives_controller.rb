@@ -28,6 +28,9 @@ class Public::DrivesController < ApplicationController
 
 
   def destroy
+    @drive = Drive.find(params[:id])
+    @drive.destroy
+    redirect_to public_drives_path
   end
 
 

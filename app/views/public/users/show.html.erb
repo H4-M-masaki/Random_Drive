@@ -12,17 +12,25 @@
 ユーザーの名前
 自己紹介文
 退会機能も付ける
+<p>
+ <label>プロフィール画像</label><br>
+ <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
+</p>
+<p>
+ <label>ニックネーム</label><br>
+ <%= @user.name %>
+</p>
+<p>
+ <label>プロフィール</label><br>
+ <%= @user.introduction %>
+</p>
+<%= link_to "プロフィール編集", edit_public_user_path(current_user) %><br>
 
-<label>プロフィール画像</label>
-<%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
-<label>ニックネーム</label>
-<%= @user.name %>
-<label>プロフィール</label>
-<%= @user.introduction %>
-
-<%= link_to "プロフィール編集", edit_public_user_path(current_user) %>
+<label>行きたい場所</label><br>
+<% @drives.each do |drive| %>
+ <%= drive.address %><br>
+<% end %>
 
 
-
-
-<%= link_to "行きたい場所", new_public_drife_path %>
+<%= link_to "行きたい場所一覧", public_drives_path %>
+<%= link_to "行きたい場所の登録", new_public_drife_path %>
