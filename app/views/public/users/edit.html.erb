@@ -6,3 +6,18 @@
 出来ること<br>
 登録情報の変更<br>
 メールアドレス、パスワード、名前（ニックネーム）、自己紹介文
+
+
+<%= form_with model: @user, url: public_user_path(@user.id), local:true do |f| %>
+
+ <label>ニックネーム</label>
+ <%= f.text_field :name %>
+ <label>プロフィール画像</label>
+ <%= f.attachment_field :profile_image %>
+ <label>プロフィール</label>
+ <%= f.text_field :introduction %>
+
+
+
+ <%= f.submit '保存する' %>
+<% end %>

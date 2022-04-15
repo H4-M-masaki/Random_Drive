@@ -12,3 +12,12 @@
 ユーザーの名前
 自己紹介文
 退会機能も付ける
+
+<label>プロフィール画像</label>
+<%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
+<label>ニックネーム</label>
+<%= @user.name %>
+<label>プロフィール</label>
+<%= @user.introduction %>
+
+<%= link_to "プロフィール編集", edit_public_user_path(current_user) %>
