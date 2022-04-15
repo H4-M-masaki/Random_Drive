@@ -3,3 +3,11 @@
 
 ここに行きたい場所の登録機能
 
+<h1>行きたい場所の登録</h1>
+
+<%= form_with model: @drive, url: public_drives_path, local:true do |f| %>
+ <%= f.text_field :address %>
+
+
+ <%= f.submit '登録' %>
+<% end %>

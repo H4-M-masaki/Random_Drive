@@ -2,3 +2,11 @@
 <p>Find me in app/views/public/drives/index.html.erb</p>
 
 行きたい場所の候補一覧　５か所くらい
+
+
+<% @drives.each do |drive| %>
+ <%= drive.address %>
+ <%= link_to "編集する", edit_public_drife_path(drive.id) %>
+ <%= link_to "削除する", public_drife_path(drive.id), method: :delete %>
+
+<% end %>
