@@ -29,7 +29,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
 
     resources :users, only: [:show, :edit, :updete, :create]
-    resources :posts, only: [:index, :new, :show, :edit, :destroy]
+    resources :posts, only: [:index, :new, :show, :edit, :destroy, :create]
 
   end
 
