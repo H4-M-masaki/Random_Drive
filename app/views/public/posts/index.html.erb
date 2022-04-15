@@ -3,4 +3,13 @@
 
 
 全ユーザーの投稿一覧<br>
-投稿を押せば詳細ページへ行くリンクの作成
+投稿を押せば詳細ページへ行くリンクの作成<br>
+
+
+<% @posts.each do |post| %>
+ <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x300' %>
+ <%= link_to post.title, public_post_path(post.id)  %><br>
+ <%= post.body %><br>
+
+
+<% end %>

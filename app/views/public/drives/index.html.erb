@@ -3,9 +3,10 @@
 
 行きたい場所の候補一覧<br>
 
-
+<%# if @drive.user == current_user %>
 <% @drives.each do |drive| %>
  <%= drive.address %>
  <%= link_to "編集", edit_public_drife_path(drive.id) %><br>
- 
+
 <% end %>
+<%# end %>

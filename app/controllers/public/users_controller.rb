@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @drives = Drive.all
+    @drive = Drive.find(params[:id])
   end
 
   def edit

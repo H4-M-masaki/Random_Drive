@@ -27,8 +27,11 @@
 <%= link_to "プロフィール編集", edit_public_user_path(current_user) %><br>
 
 <label>行きたい場所</label><br>
+<% if current_user.id %>
 <% @drives.each do |drive| %>
  <%= drive.address %><br>
+<% end %>
+
 <% end %>
 
 

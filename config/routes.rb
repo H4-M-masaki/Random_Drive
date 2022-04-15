@@ -27,6 +27,5 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :posts, only: [:index, :new, :show, :edit, :destroy, :create, :update]
     resources :drives, only: [:new, :index, :edit, :update, :destroy, :create]
   end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
