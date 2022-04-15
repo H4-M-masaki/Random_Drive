@@ -21,7 +21,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     namespace :admin do
     root to: "homes#top"
-
     resources :users, only: [:index, :show, :edit, :updete]
 
   end
@@ -31,7 +30,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     resources :users, only: [:show, :edit, :updete, :create]
     resources :posts, only: [:index, :new, :show, :edit, :destroy]
-
 
   end
 

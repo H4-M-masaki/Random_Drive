@@ -12,18 +12,23 @@
 
   <body>
     <header>
-     <%= link_to root_path do %>
-      <h1>RandomDrive</h1>
-     <% end %>
+
       <% if user_signed_in? %>
+       <%= link_to root_path do %>
+        <h1>RandomDrive</h1>
+       <% end %>
        <%= link_to "マイページ", public_user_path(current_user.id) %>
        <%= link_to "新規投稿", new_public_post_path %>
        <%= link_to "投稿一覧", public_posts_path %>
        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% elsif admin_signed_in? %>
+       <%= link_to admin_root_path do %>
+        <h1>RandomDrive</h1>
+       <% end %>
        <%= link_to "会員一覧", admin_users_path %>
        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       <% else %>
+       <h1>RandomDrive</h1>
        <%= link_to "About", about_path %>
        <%= link_to "新規登録", new_user_registration_path %>
        <%= link_to "ログイン", new_user_session_path %>
