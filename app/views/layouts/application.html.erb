@@ -12,8 +12,11 @@
 
   <body>
     <header>
+     
       <% if user_signed_in? %>
        <%= link_to "マイページ", public_user_path(current_user.id) %>
+       <%= link_to "新規投稿", new_public_post_path %>
+       <%= link_to "投稿一覧", public_posts_path %>
        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% elsif admin_signed_in? %>
        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

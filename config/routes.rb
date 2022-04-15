@@ -32,10 +32,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :users, only: [:show, :edit, :updete, :create]
     resources :posts, only: [:index, :new, :show, :edit, :destroy]
 
-    get 'posts/index'
-    get 'posts/new'
-    get 'posts/show'
-    get 'posts/edit'
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
