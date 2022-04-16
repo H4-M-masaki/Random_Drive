@@ -4,3 +4,20 @@
 登録済みユーザーを表示させる
 
 ユーザーの詳細ページへのリンクをつける
+
+
+<% @users.each do |user| %><br>
+ <%= user.id %>
+ <%= link_to admin_user_path(user.id) do %>
+ <%= user.name %>
+ <% end %>
+ <%= user.email %>
+ <% if user.is_deleted == true %>
+  退会
+ <% else %>
+  有効
+ <% end %>
+
+
+
+<% end %>
