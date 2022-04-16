@@ -1,2 +1,22 @@
 <h1>Admin::Users#show</h1>
 <p>Find me in app/views/admin/users/show.html.erb</p>
+
+<h2>会員詳細</h2>
+
+<h4>会員ID</h4>
+<%= @user.id %>
+
+<h4>ユーザーネーム</h4>
+<%= @user.name %>
+
+<h4>メールアドレス</h4>
+<%= @user.email %>
+
+<h4>会員ステータス</h4>
+  <% if @user.is_deleted == true %>
+    退会
+  <% else %>
+    有効
+  <% end %>
+
+<%= link_to "編集する", edit_admin_user_path %>
