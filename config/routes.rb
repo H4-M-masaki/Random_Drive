@@ -30,7 +30,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     resources :users, only: [:show, :edit, :update, :create]
     resources :posts, only: [:index, :new, :show, :edit, :destroy, :create, :update] do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create, :destroy]
     end
     resources :drives, only: [:new, :index, :edit, :update, :destroy, :create]
   end
