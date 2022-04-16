@@ -7,11 +7,11 @@
 <h1>投稿編集</h1>
 
 <%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
-
+ <h2>お出かけ先</h2>
  <%= f.text_field :title %>
-
+<h2>感想</h2>
  <%= f.text_area :body %>
-
+　<h2>写真</h2>
  <%= f.attachment_field :image %>
 
 

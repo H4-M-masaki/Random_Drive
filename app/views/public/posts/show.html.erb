@@ -16,6 +16,6 @@
 
 <% if @post.user == current_user %>
  <%= link_to '編集する', edit_public_post_path(@post.id) %><br>
- 
+
 <% end %>
 <%= link_to '投稿一覧ページへ', public_posts_path %>

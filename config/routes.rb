@@ -23,6 +23,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   namespace :public do
+
+    get "/users/quit" => "users#quit"
+    patch "/users/out" => "users#out"
+
+
     resources :users, only: [:show, :edit, :update, :create]
     resources :posts, only: [:index, :new, :show, :edit, :destroy, :create, :update]
     resources :drives, only: [:new, :index, :edit, :update, :destroy, :create]
