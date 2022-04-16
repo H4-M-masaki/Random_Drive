@@ -47,6 +47,6 @@ private
 
 
   def drive_params
-    params.require(:drive).permit(:address, :user)
+    params.require(:drive).permit(:address, :user, :latitude, :longitude)
   end
 end

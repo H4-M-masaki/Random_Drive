@@ -2,6 +2,10 @@ class Drive < ApplicationRecord
   #MAX_DRIVES_COUNT = 5
     belongs_to :user
 
+
+   geocoded_by :address
+   after_validation :geocode, if: :address_changed?
+
 #    validate :drives_count_limit
 
 #private
