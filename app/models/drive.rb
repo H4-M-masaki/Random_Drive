@@ -1,5 +1,5 @@
 class Drive < ApplicationRecord
-  MAX_DRIVES_COUNT = 5
+  #MAX_DRIVES_COUNT = 5
     belongs_to :user
 
 #    validate :drives_count_limit

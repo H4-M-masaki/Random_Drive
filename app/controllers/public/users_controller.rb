@@ -1,8 +1,9 @@
 class Public::UsersController < ApplicationController
+
+
   def show
     @user = User.find(params[:id])
-    @drives = Drive.all
-    @drive = Drive.find(params[:id])
+    @drives = Drive.where(user_id: current_user.id)
   end
 
   def edit

@@ -5,9 +5,10 @@
 行きたい場所の編集機能
 削除と更新もできるように<br>
 
-
+<% if @drive.user == current_user %>
 <%= form_with model: @drive, url: public_drife_path, local:true do |f| %>
  <%= f.text_field :address %>
  <%= f.submit "保存" %>
  <%= link_to "削除", public_drife_path, method: :delete %>
+<% end %>
 <% end %>

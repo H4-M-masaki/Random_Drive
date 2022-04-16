@@ -1,11 +1,13 @@
 class Public::DrivesController < ApplicationController
+
+
+
   def new
     @drive = Drive.new
   end
 
   def index
-    @drives = Drive.all
-    
+    @drives = Drive.where(user_id: current_user.id)
   end
 
   def edit
@@ -45,6 +47,6 @@ private
 
 
   def drive_params
-    params.require(:drive).permit(:address)
+    params.require(:drive).permit(:address, :user)
   end
 end
