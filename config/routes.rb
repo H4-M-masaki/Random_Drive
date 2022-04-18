@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-  end
+
   # 顧客用
 devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -23,6 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show]
   end
 
 

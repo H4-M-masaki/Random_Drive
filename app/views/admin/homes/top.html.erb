@@ -6,7 +6,7 @@
 <% @posts.each do |post| %>
  <%= attachment_image_tag post, :image, format: 'jpeg', size: '200' %>
  <h2>お出かけ先</h2>
- <%= link_to post.title, public_post_path(post.id)  %><br>
+ <%= link_to post.title, admin_post_path(post.id)  %><br>
  <h2>投稿者</h2>
- <%= link_to post.user.name, public_user_path(post.user_id) %><br>
+ <%= link_to post.user.name, admin_user_path(post.user_id) %><br>
 <% end %>
