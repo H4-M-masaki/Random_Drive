@@ -1,12 +1,7 @@
-<h1>Public::Drives#index</h1>
-<p>Find me in app/views/public/drives/index.html.erb</p>
 
-行きたい場所の候補一覧<br>
-
-<%# if @drive.user == current_user %>
+<h1>目的地一覧</h1>
 <% @drives.each do |drive| %>
  <%= drive.address %>
  <%= link_to "編集", edit_public_drife_path(drive.id) %><br>
 
 <% end %>
-<%# end %>

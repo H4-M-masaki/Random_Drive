@@ -1,24 +1,16 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
 
-
-ユーザー編集画面<br>
-出来ること<br>
-登録情報の変更<br>
-メールアドレス、パスワード、名前（ニックネーム）、自己紹介文
-
+<h1>マイページ編集</h1>
 
 <%= form_with model: @user, url: public_user_path(@user.id), local:true do |f| %>
 
  <label>ニックネーム</label>
  <%= f.text_field :name %>
+ <label>メールアドレス</label>
+ <%= f.email_field :email %>
  <label>プロフィール画像</label>
  <%= f.attachment_field :profile_image %>
  <label>プロフィール</label>
  <%= f.text_field :introduction %>
-
-
-
  <%= f.submit '保存する' %>
 <% end %>
 

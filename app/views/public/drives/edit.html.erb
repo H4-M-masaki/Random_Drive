@@ -1,9 +1,5 @@
-<h1>Public::Drives#edit</h1>
-<p>Find me in app/views/public/drives/edit.html.erb</p>
 
-
-行きたい場所の編集機能
-削除と更新もできるように<br>
+<h1>ドライブ目的地編集</h1>
 
 <% if @drive.user == current_user %>
 <%= form_with model: @drive, url: public_drife_path, local:true do |f| %>

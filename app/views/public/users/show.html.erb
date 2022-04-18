@@ -1,17 +1,5 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>マイページ</h1>
 
-マイページ、　編集ページへのリンク作成<br>
-
-表示させるもの<br>
-
-自分の投稿一覧<リンクで各投稿の詳細ページへ><br>
-
-
-ユーザー画像
-ユーザーの名前
-自己紹介文
-退会機能も付ける
 <p>
  <label>プロフィール画像</label><br>
  <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
