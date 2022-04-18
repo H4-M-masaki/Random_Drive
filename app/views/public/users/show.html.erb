@@ -26,17 +26,23 @@
 </p>
 <% if @user == current_user %>
 <%= link_to "プロフィール編集", edit_public_user_path(current_user) %><br>
-<%# end %>
-<label>行きたい場所</label><br>
 
+<h4>行きたい場所</h4>
 <% @drives.each do |drive| %>
  <%= drive.address %><br>
 <% end %>
 
-<%# if @user == current_user %>
+
 <%= link_to "行きたい場所一覧", public_drives_path %>
 <%= link_to "行きたい場所の登録", new_public_drife_path %>
 <% end %>
 
 
-
+<h4>投稿一覧</h4>
+<% @posts.each do |post| %>
+  <%= attachment_image_tag post, :image, format: 'jpeg', size: '200' %>
+  <h4>お出かけ先</h4>
+  <%= link_to post.title, public_post_path(post.id)  %>
+  <h4>投稿者</h4>
+  <%= link_to post.user.name, public_user_path(post.user_id) %>
+<% end %>
