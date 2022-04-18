@@ -30,6 +30,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     resources :users, only: [:show, :edit, :update, :create]
     resources :posts, only: [:index, :new, :show, :edit, :destroy, :create, :update]do
+      collection do
+        get 'search'
+      end
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end

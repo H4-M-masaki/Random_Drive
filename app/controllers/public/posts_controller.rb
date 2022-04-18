@@ -44,11 +44,24 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  #検索
+  def search
+   if params[:keyword].present?
+     @posts = Post.where('title like?', "%#{params[:keyword]}%")
+     @keyword = params[:keyword]
+   else
+     @posts = Post.all
+   end
+  end
+
+
+
+
 
 
   private
     def post_params
-      params.require(:post).permit(:image, :title, :body, :profile_image)
+      params.require(:post).permit(:image, :title, :body, :profile_image, :keyword)
     end
 
 end
