@@ -1,9 +1,7 @@
-<h1>Public::Drives#new</h1>
-<p>Find me in app/views/public/drives/new.html.erb</p>
 
-ここに行きたい場所の登録機能
 
-<h1>行きたい場所の登録</h1>
+
+<h1>行きたい場所登録</h1>
 
 <%= form_with model: @drive, url: public_drives_path, local:true do |f| %>
  <%= f.text_field :address %>
@@ -14,17 +12,60 @@
 
 
 
-<div id="map" style="width: 500px;height: 350px;"></div>
+<h2>GoogleMap</h2>
+
+<!-- 地名入力用のinputを追加 -->
+<input id="address" type="textbox" >
+
+<!-- buttonをクリックしたらcodeAddressを実行　-->
+<input type="button" value="検索" onclick="codeAddress()">
+<div id='map'>
+</div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
 
 <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-</script>
+/*
+mapを関数の外で定義(codeAddressでも使うため)
+geocoderを用意
+*/
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%ENV['MAP_API_KEY'] %>&callback=initMap"
-    async defer></script>
+let map
+let geocoder
+
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 35.68944, lng: 139.69167},
+  zoom: 8
+  });
+}
+
+function codeAddress(){
+  // 入力を取得
+  let inputAddress = document.getElementById('address').value;
+
+  // geocodingしたあとmapを移動
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+　　　　　　　　　　　　// map.setCenterで地図が移動
+      map.setCenter(results[0].geometry.location);
+
+　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAP_API_KYE'] %> &callback=initMap" async defer></script>
