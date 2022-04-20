@@ -41,5 +41,12 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :profile_image, :introduction)
   end
 
+   def correct_user
+    @user = User.find(params[:id])
+    if current_user != @user
+     redirect_to user_path(current_user)
+    end
+   end
+
 
 end

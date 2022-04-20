@@ -13,7 +13,9 @@
  <%= @user.introduction %>
 </p>
 <% if @user == current_user %>
-<%= link_to "プロフィール編集", edit_public_user_path(current_user) %><br>
+ <%= link_to edit_public_user_path(current_user) do %><br>
+  <button type="button" class="btn-sm btn-info">プロフィール編集</button>
+ <% end %>
 
 <h4>行きたい場所</h4>
 <% @drives.each do |drive| %>
@@ -21,8 +23,15 @@
 <% end %>
 
 
-<%= link_to "行きたい場所一覧", public_drives_path %>
-<%= link_to "行きたい場所の登録", new_public_drife_path %>
+
+ <%= link_to public_drives_path do %>
+  <button type="button" class="btn-sm btn-primary">行きたい場所一覧</button>
+ <% end %>
+
+
+ <%= link_to new_public_drife_path do %>
+  <button type="button" class="btn-sm btn-success">行きたい場所の登録</button>
+ <% end %>
 <% end %>
 
 
