@@ -1,9 +1,9 @@
 class Public::PostsController < ApplicationController
-  
+
    before_action :correct_user, only: [:edit]
-   
+
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def new
@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
     if @post.save
       redirect_to public_post_path(@post.id)
     else
@@ -25,6 +26,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @posts = PostComment.page(params[:page])
 
   end
 
@@ -57,14 +59,18 @@ class Public::PostsController < ApplicationController
    end
   end
 
-
-
-
-
-
   private
+
     def post_params
-      params.require(:post).permit(:image, :title, :body, :profile_image, :keyword)
+      params.require(:post).permit(:image, :title, :body, :profile_image, :keyword, :user)
     end
 
+
+    def correct_user
+     @post = Post.find(params[:id])
+     @user = @post.user
+     if @user != current_user
+      redirect_to user_path(current_user)
+     end
+    end
 end

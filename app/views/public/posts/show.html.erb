@@ -1,6 +1,6 @@
 
 <div class="row">
-  <div class="col-10 offset-1">
+  <div class="col-md-10 col-lg-10 offset-1">
      <h1>投稿詳細</h1>
      <div class="card">
       <div class="card-img-top" alt="card-img-top">
@@ -12,8 +12,9 @@
       <p class="card-text"><small class="text-muted"><%= @post.created_at.strftime('%Y/%m/%d') %></small></p>
     </div>
    </div>
-
-          <% if @post.favorited_by?(current_user) %>
+  <div class="row g-0">
+  <div class="col-sm-3">
+    <% if @post.favorited_by?(current_user) %>
           <p>
             <%= link_to public_post_favorites_path(@post), method: :delete do %>
               ♥<%= @post.favorites.count %> いいね
@@ -26,20 +27,21 @@
             <% end %>
           </p>
         <% end %>
-
       <% if @post.user == current_user %>
-       <%= link_to '編集する', edit_public_post_path(@post.id) %><br>
+       <%= link_to edit_public_post_path(@post.id) do %>
+       <button type="button" class="btn-sm btn-primary">編集する</button>
+       <% end %><br>
       <% end %>
-      <%= link_to '投稿一覧ページへ', public_posts_path %>
-
-
-
-
-
-
-
-
-              <table class="table">
+      <%= link_to  public_posts_path do %>
+      <button type="button" class="btn-sm btn-success">投稿一覧ページへ</button>
+      <% end %>
+       <%= form_with model: [@post, @post_comment], url:  public_post_post_comments_path(@post) do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+  <div class="col-md-9">
+    <table class="table">
           <thead>
             <tr>
               <th scope="col">コメントユーザー</th>
@@ -48,7 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @post.post_comments.each do |post| %>
+            <% @posts.each do |post| %>
             <tr>
               <td>
                <%= attachment_image_tag @user, :profile_image, size: '50', fallback: "no_image.jpg" %>
@@ -65,18 +67,12 @@
             <% end %>
           </tbody>
         </table>
-
-        <p>コメント件数：<%= @post.post_comments.count %></p>
-      <div>
-        <%= form_with model: [@post, @post_comment], url:  public_post_post_comments_path(@post) do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
-        <% end %>
-      </div>
-
-
-
+        <%= paginate @posts %>
+        <p>コメント件数：<%= @post.post_comments.count %></p></div>
+    </div>
+   <div>
   </div>
+ </div>
 </div>
 
 
