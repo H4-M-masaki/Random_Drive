@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
    before_action :correct_user, only: [:edit]
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(6).reverse_order
   end
 
   def new
@@ -26,8 +26,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @posts = PostComment.page(params[:page])
-
+    @post_comments = @post.post_comments.page(params[:page]).per(5).reverse_order
   end
 
   def edit
@@ -64,7 +63,6 @@ class Public::PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:image, :title, :body, :profile_image, :keyword, :user)
     end
-
 
     def correct_user
      @post = Post.find(params[:id])

@@ -17,3 +17,5 @@
  <h2>投稿者</h2>
  <%= link_to post.user.name, public_user_path(post.user_id) %><br>
 <% end %>
+
+<%= paginate @posts %>

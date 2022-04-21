@@ -26,7 +26,7 @@ class Public::DrivesController < ApplicationController
     @drive = Drive.new(drive_params)
     @drive.user_id = current_user.id
     #@drives = Drive.find(drive_params)
-    
+
     if @drive.save
       redirect_to public_drives_path
     else
