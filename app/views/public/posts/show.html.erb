@@ -9,7 +9,7 @@
      <div class="card-body">
       <h4 class="card-title"><%= @post.title %></h4>
       <p class="card-text"><%= @post.body %></p>
-      <p class="card-text"><small class="text-muted"><%= @post.created_at.strftime('%Y/%m/%d') %></small></p>
+      <p class="card-text"><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></small></p>
     </div>
    </div>
   <div class="row g-0">
@@ -58,7 +58,7 @@
               </td>
               <td><%= post.comment %></td>
               <td>
-                <%= post.created_at.strftime('%Y/%m/%d') %>
+                <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
                <% if post.user == current_user %>
                 <%= link_to "削除", public_post_post_comment_path(@post, post ), method: :delete %>
                <% end %>
