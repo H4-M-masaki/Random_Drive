@@ -1,46 +1,32 @@
-<div class="row">
-  <div class="col-md-10 col-lg-10 offset-1">
-   <h1>投稿編集</h1>
-    <div class="card">
+
+
+  <h1>投稿編集</h1>
      <%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
-      <h2>写真</h2>
-       <div class="card-img-top" alt="card-img-top">
-         <%= f.label :"ドライブ先写真" %>
-         <%= f.attachment_field :image, id: "image" %>
-        <div class="item-image col-lg-6">
-         <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_img.png", size: "300x200" %>
-        </div>
-           <script>
+       <%= f.label :"ドライブ先写真" %>
+       <%= f.attachment_field :image, id: "image" %>
+        <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %>
+        <script>
            $(function() {
                $('#image').on('change', function() {
                    var selectedFile = this.files[0];
                    var fileReader = new FileReader();
-
                    fileReader.onload = function(event) {
                        var loadedImageUri = event.target.result;
                         $('.img-square').attr('src', loadedImageUri);
                    };
-
                    fileReader.readAsDataURL(selectedFile);
                });
            });
            </script>
-        </div>
-        <div class="card-body">
-         <h2>ドライブ先</h2>
-         <h5 class="card-title"><%= f.text_field :title %></h5>
-         <h2>感想</h2>
-         <p class="card-text"><%= f.text_area :body %></p>
-         <p class="card-text"><small class="text-muted"></small></p>
-        </div>
+       <h2>ドライブ先</h2>
+       <%= f.text_field :title %>
+       <h2>感想</h2>
+        <%= f.text_area :body %>
       <%= f.submit '更新', class: "btn-sm btn-success" %>
      <% end %>
-   </div>
-   <%= link_to  public_post_path(@post.id,),method: :delete, "data-confirm"=>"本当に消しますか？" do %>
-   <button type="button" class="btn-sm btn-danger">削除する</button>
-   <% end %>
-  </div>
- </div>
+      <%= link_to  public_post_path(@post.id,),method: :delete, "data-confirm"=>"本当に消しますか？" do %>
+       <button type="button" class="btn-sm btn-danger">削除する</button>
+      <% end %>
 
 
 

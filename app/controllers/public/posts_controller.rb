@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+
   end
 
   def create
@@ -51,10 +52,10 @@ class Public::PostsController < ApplicationController
   #検索
   def search
    if params[:keyword].present?
-     @posts = Post.where('title like?', "%#{params[:keyword]}%")
+     @posts = Post.where('title like?', "%#{params[:keyword]}%").page(params[:page]).per(6).reverse_order
      @keyword = params[:keyword]
    else
-     @posts = Post.all
+     @posts = Post.all.page(params[:page]).per(6).reverse_order
    end
   end
 

@@ -1,15 +1,46 @@
 
-<h1>新規投稿</h1>
 
+
+<h1>新規投稿</h1>
 <%= form_with model: @post, url: public_posts_path, local:true do |f| %>
- <h4>旅行先</h4>
+
+    <%= f.label :"ドライブ先" %>
+    <%= f.attachment_field :image, id: "image" %>
+
+    <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %>
+
+
+
+<script>
+$(function() {
+    $('#image').on('change', function() {
+        var selectedFile = this.files[0];
+        var fileReader = new FileReader();
+
+        fileReader.onload = function(event) {
+            var loadedImageUri = event.target.result;
+             $('.img-square').attr('src', loadedImageUri);
+        };
+
+        fileReader.readAsDataURL(selectedFile);
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+ <h4>ドライブ先</h4>
  <%= f.text_field :title %>
  <h4>感想</h4>
  <%=f.text_area :body %>
 
- <h4>写真</h4>
- <%= f.attachment_field :image %>
- <p></p>
+
 
  <%= f.submit '投稿する' %>
 <% end %>

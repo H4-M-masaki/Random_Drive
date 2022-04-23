@@ -1,28 +1,36 @@
-<div class="row">
-  <div class="col-md-10 col-lg-10 offset-1">
-   <h1>投稿一覧</h1>
-   <h4>タイトル検索</h4>
-    <%= form_with url: search_public_posts_path, local: true, method: :get do |form| %>
-     <%= form.text_field :keyword %>
-     <%= form.submit "検索" %>
-    <% end %>
-    <div class="card">
-     <% @posts.each do |post| %>
-     <div class="card-img-top" alt="card-img-top">
-      <%= attachment_image_tag post, :image, format: 'jpeg', size: '200' %>
-     </div>
-     <div class="card-body">
-      <h4 class="card-title"><%= link_to post.title, public_post_path(post.id)  %></h4>
+<div class="container">
+ <h1>投稿一覧</h1>
+ <h4>タイトル検索</h4>
+ <%= form_with url: search_public_posts_path, local: true, method: :get do |form| %>
+  <%= form.text_field :keyword %>
+  <%= form.submit "検索" %>
+ <% end %>
+
+<div class="row row-cols-1 row-cols-sm-4">
+ <% @posts.each do |post| %>
+  <div class="col m-3">
+    <div class="card h-100">
+      <div class="img-fluid" alt="card-grid-image">
+       <%= attachment_image_tag post, :image, format: 'jpeg', size: '200', class: "img-fluid" %>
+       </div>
+      <div class="card-body m-auto">
+        <h5 class="card-title">
+         <p>お出かけ先</p>
+      <%= link_to post.title, public_post_path(post.id)  %></h5>
+        <p class="card-text">投稿者
+      <%= link_to post.user.name, public_user_path(post.user_id) %></p>
+      </div>
+    </div>
+
+  </div>
+  <% end %>
+ </div>
+ </div>
 
 
 
 
 
- 
- <h2>お出かけ先</h2>
- <br>
- <h2>投稿者</h2>
- <%= link_to post.user.name, public_user_path(post.user_id) %><br>
-<% end %>
 
 <%= paginate @posts %>
+
