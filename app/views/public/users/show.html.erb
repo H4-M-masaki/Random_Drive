@@ -1,11 +1,11 @@
 <div class="container">
-     <% if @user == current_user %>
+  <div class="row">
+   <div class="col-md-auto">
+    <% if @user == current_user %>
     <h1>マイページ</h1>
     <% else %>
     <h1>ユーザーページ</h1>
     <% end %>
-  <div class="row row-cols-2">
-   <div class="col-md-auto">
     <div class="p-1 border bg-light">
      <div class="card h-100">
       <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @user, :profile_image, size: 'auto', fallback: "no_image.jpg" %></div>
@@ -39,8 +39,11 @@
     </div>
    </div>
    <div class="col-md-auto">
-     <h2>投稿一覧</h2>
+    <h1>投稿一覧</h1>
+    <div class="row">
+
      <% @posts.each do |post| %>
+     <div class="col-md-auto">
      <div class="p-1 border bg-light">
       <div class="card">
        <div class="img-fluid" alt="card-grid-image">
@@ -59,14 +62,15 @@
       </div>
       </div>
      </div>
-    <% end %>
-    <%= paginate @posts %>
+     </div>
+     <% end %>
+
+    </div>
+<%= paginate @posts %>
    </div>
    </div>
 
 </div>
-
-
 
 
 

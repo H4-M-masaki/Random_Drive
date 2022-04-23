@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @drives = Drive.where(user_id: current_user.id)
-    @posts = @user.posts.page(params[:page]).per(2).reverse_order
+    @posts = @user.posts.page(params[:page]).per(3).reverse_order
   end
 
   def edit
