@@ -1,24 +1,26 @@
 <div class="container">
-  <div class="row row-cols-2">
-   <div class="col-md-auto">
-    <% if @user == current_user %>
+     <% if @user == current_user %>
     <h1>マイページ</h1>
     <% else %>
     <h1>ユーザーページ</h1>
     <% end %>
+  <div class="row row-cols-2">
+   <div class="col-md-auto">
     <div class="p-1 border bg-light">
-     <p>
-      <label>プロフィール画像</label><br>
-      <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
-     </p>
-     <p>
-      <label>ニックネーム</label><br>
-      <%= @user.name %>
-     </p>
-     <p>
-      <label>プロフィール</label><br>
-      <%= @user.introduction %>
-     </p>
+     <div class="card h-100">
+      <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @user, :profile_image, size: 'auto', fallback: "no_image.jpg" %></div>
+      <div class="card-body">
+       <h4 class="card-title">
+       <label>ニックネーム</label>
+       <%= @user.name %></h4>
+       <p class="card-text">
+        <label>プロフィール</label><br>
+        <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+       </p>
+      </div>
+     </div>
+
+
      <% if @user == current_user %>
       <%= link_to edit_public_user_path(current_user) do %><br>
        <button type="button" class="btn-sm btn-info">プロフィール編集</button>
@@ -37,10 +39,10 @@
     </div>
    </div>
    <div class="col-md-auto">
-    <h2>投稿一覧</h2>
-    <% @posts.each do |post| %>
+     <h2>投稿一覧</h2>
+     <% @posts.each do |post| %>
      <div class="p-1 border bg-light">
-      <div class="card h-100">
+      <div class="card">
        <div class="img-fluid" alt="card-grid-image">
         <%= attachment_image_tag post, :image, format: 'jpeg', size: '200' %>
        </div>
@@ -58,10 +60,15 @@
       </div>
      </div>
     <% end %>
+    <%= paginate @posts %>
    </div>
-  </div>
+   </div>
+
 </div>
-<%= paginate @posts %>
+
+
+
+
 
 
 

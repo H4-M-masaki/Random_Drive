@@ -1,17 +1,54 @@
+<div class="container">
+  <h1>マイページ編集</h1>
+  <div class="row justify-content-md-center">
+   <div class="col-md-auto">
+    <%= form_with model: @user, url: public_user_path(@user.id), local:true do |f| %>
+     <div class="card">
+     <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @user, :profile_image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %></div>
+     <label>プロフィール画像</label>
+     <%= f.attachment_field :profile_image, id: "profile_image" %>
+     <div class="card-body">
+      <h6 class="card-title">
+       ニックネーム<br>
+       <%= f.text_field :name %><br>
+       メールアドレス<br>
+       <%= f.email_field :email %>
+      </h6>
+      <p class="card-text">
+       <label>プロフィール</label><br>
+       <%= f.text_area :introduction %>
+      </p>
+     </div>
+     <%= f.submit '保存する', class: "btn-sm btn-success" %>
+     <%= link_to  public_users_quit_path do %>
+     <button type="button" class="btn-sm btn-danger">退会する</button>
+     <% end %>
+    </div>
 
-<h1>マイページ編集</h1>
+    <% end %>
+   </div>
+  </div>
+</div>
 
-<%= form_with model: @user, url: public_user_path(@user.id), local:true do |f| %>
 
- <label>ニックネーム</label>
- <%= f.text_field :name %>
- <label>メールアドレス</label>
- <%= f.email_field :email %>
- <label>プロフィール画像</label>
- <%= f.attachment_field :profile_image %>
- <label>プロフィール</label>
- <%= f.text_field :introduction %>
- <%= f.submit '保存する' %>
-<% end %>
 
-<%= link_to "退会する", public_users_quit_path %>
+
+
+
+
+
+
+
+<script>
+           $(function() {
+               $('#profile_image').on('change', function() {
+                   var selectedFile = this.files[0];
+                   var fileReader = new FileReader();
+                   fileReader.onload = function(event) {
+                       var loadedImageUri = event.target.result;
+                        $('.img-square').attr('src', loadedImageUri);
+                   };
+                   fileReader.readAsDataURL(selectedFile);
+               });
+           });
+           </script>
