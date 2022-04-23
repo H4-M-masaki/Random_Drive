@@ -1,28 +1,50 @@
-
+<div class="container">
  <h1>投稿編集</h1>
- 
-  <%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
-
-   <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %>
- 
+ <div class="row justify-content-md-center">
+  <div class="col-md-auto">
+   <%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
+   <div class="card h-100">
+    <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %></div>
     <%= f.attachment_field :image, id: "image" %>
-     <p>ドライブ先</p>
-     <%= f.text_field :title %>
+    <div class="card-body m-auto">
+     <h5 class="card-title">
+      <p>ドライブ先</p>
+      <%= f.text_field :title %>
+      </h5>
 
-     <p>感想</p>
-     <%= f.text_area :body %>
-          <%= f.submit '更新', class: "btn-sm btn-success" %>
+      <p class="card-text">
+       感想
+       <%= f.text_area :body %>
+      </p>
+                <%= f.submit '更新', class: "btn-sm btn-success" %>
      <% end %>
       <%= link_to  public_post_path(@post.id,),method: :delete, "data-confirm"=>"本当に消しますか？" do %>
        <button type="button" class="btn-sm btn-danger">削除する</button>
       <% end %>
 
+   </div>
+  </div>
+ </div>
+</div>
 
 
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

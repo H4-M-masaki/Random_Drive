@@ -1,15 +1,29 @@
+<div class="container">
+  <h1>新規投稿</h1>
+  <div class="row justify-content-md-center">
+   <div class="col-md-auto">
+    <%= form_with model: @post, url: public_posts_path, local:true do |f| %>
+     <div class="card">
+     <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %></div>
+      <%= f.label :"ドライブ先" %>
+      <%= f.attachment_field :image, id: "image" %>
+     <div class="card-body ">
+      <h5 class="card-title">
+       <p>ドライブ先</p>
+       <%= f.text_field :title %>
+      </h5>
+      <p class="card-text">
+       感想
+       <%=f.text_area :body %>
+      </p>
+      <%= f.submit '投稿する' %>
+     </div>
 
-
-
-<h1>新規投稿</h1>
-<%= form_with model: @post, url: public_posts_path, local:true do |f| %>
-
-    <%= f.label :"ドライブ先" %>
-    <%= f.attachment_field :image, id: "image" %>
-
-    <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %>
-
-
+    </div>
+   <% end %>
+  </div>
+</div>
+</div>
 
 <script>
 $(function() {
@@ -35,12 +49,8 @@ $(function() {
 
 
 
- <h4>ドライブ先</h4>
- <%= f.text_field :title %>
- <h4>感想</h4>
- <%=f.text_area :body %>
 
 
 
- <%= f.submit '投稿する' %>
-<% end %>
+
+
