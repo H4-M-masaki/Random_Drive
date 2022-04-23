@@ -1,26 +1,26 @@
 
 <div class="container">
-   <h2>検索結果 "<%= @keyword %>"</h2>
-   <div class="row row-cols-1 row-cols-sm-4">
-     <% @posts.each do |post| %>
-       <div class="col m-3">
-         <div class="card h-100">
-           <div class="img-fluid" alt="card-grid-image">
-             <%= attachment_image_tag post, :image, format: 'jpeg', size: '200', class: "card-img-top" %>
-           </div>
-           <div class="card-body m-auto">
-             <h5 class="card-title">
-               お出かけ先
-               <%= link_to post.title, public_post_path(post.id)  %>
-             </h5>
-             <p class="card-text">
-               投稿者
-               <%= link_to post.user.name, public_user_path(post.user_id) %>
-             </p>
-           </div>
-         </div>
-       </div>
-     <% end %>
-   </div>
+  <h2>検索結果 "<%= @keyword %>"</h2>
+  <div class="row row-cols-1 row-cols-sm-4">
+   <% @posts.each do |post| %>
+    <div class="col m-3">
+     <div class="card h-100">
+      <div class="img-fluid" alt="card-grid-image">
+       <%= attachment_image_tag post, :image, format: 'jpeg', size: '200', class: "card-img-top" %>
+      </div>
+      <div class="card-body m-auto">
+       <h5 class="card-title">
+        お出かけ先
+        <%= link_to post.title, public_post_path(post.id)  %>
+       </h5>
+       <p class="card-text">
+        投稿者
+        <%= link_to post.user.name, public_user_path(post.user_id) %>
+       </p>
+      </div>
+     </div>
+    </div>
+   <% end %>
+  </div>
 </div>
 <%= paginate @posts %>

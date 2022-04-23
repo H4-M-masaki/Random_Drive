@@ -1,22 +1,16 @@
-<div class="container">
+
  <h1>投稿編集</h1>
- <div class="row justify-content-md-center">
+ 
   <%= form_with model: @post, url: public_post_path(@post.id), local:true do |f| %>
-  <div class="col-md-auto">
-   <div class="card h-100">
-  <div class="d-block mx-auto img-fluid w-50" alt="card-grid-image">
+
    <%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %>
- </div>
+ 
     <%= f.attachment_field :image, id: "image" %>
-  <div class="card-body">
-    <h5 class="card-title">
      <p>ドライブ先</p>
      <%= f.text_field :title %>
-    </h5>
-    <div class="card-text">
+
      <p>感想</p>
      <%= f.text_area :body %>
-    </div>
           <%= f.submit '更新', class: "btn-sm btn-success" %>
      <% end %>
       <%= link_to  public_post_path(@post.id,),method: :delete, "data-confirm"=>"本当に消しますか？" do %>
@@ -28,8 +22,7 @@
 
 
 
-  </div>
-</div>
+ 
 
 
 
@@ -46,15 +39,6 @@
                });
            });
            </script>
-
-
-
-
-
-  </div>
- </div>
-</div>
-
 
 
 
