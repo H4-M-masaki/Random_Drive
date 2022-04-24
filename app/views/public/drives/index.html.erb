@@ -1,7 +1,27 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    
+   <div class="col-md-auto">
+    <h1>目的地一覧</h1>
+    <table class="table table-sm">
+     <thead>
+      <tr>
+       <th scope="col"></th>
+       <th scope="col">行きたい場所</th>
+       <th scope="col"></th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @drives.each do |drive| %>
+      <tr>
+       <th scope="row"></th>
+       <td><%= drive.address %></td>
+       <td><%= link_to "編集", edit_public_drife_path(drive.id) %></td>
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+</div>
 
-<h1>目的地一覧</h1>
-<% @drives.each do |drive| %>
- <%= drive.address %>
- <%= link_to "編集", edit_public_drife_path(drive.id) %><br>
-
-<% end %>

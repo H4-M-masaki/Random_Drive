@@ -1,5 +1,20 @@
+<div class="container">
+ <div class="row justify-content-md-center">
+  <div class="col-md-auto">
 
-<h1>ドライブ目的地編集</h1>
+          <% if @drive.errors.any? %>
+         <h3><%= @drive.errors.count %>エラーが発生しました</h3>
+          <ul>
+            <% @drive.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+
+
+
+   <h1>ドライブ目的地編集</h1>
 
 <% if @drive.user == current_user %>
 <%= form_with model: @drive, url: public_drife_path, local:true do |f| %>
@@ -8,3 +23,7 @@
  <%= link_to "削除", public_drife_path, method: :delete %>
 <% end %>
 <% end %>
+  </div>
+ </div>
+</div>
+

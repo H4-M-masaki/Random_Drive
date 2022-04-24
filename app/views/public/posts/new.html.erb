@@ -1,7 +1,25 @@
 <div class="container">
-  <h1>新規投稿</h1>
   <div class="row justify-content-md-center">
    <div class="col-md-auto">
+
+
+         <% if @post.errors.any? %>
+         <h3><%= @post.errors.count %>エラーが発生しました</h3>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+
+
+
+
+
+
+
+    <h1>新規投稿</h1>
     <%= form_with model: @post, url: public_posts_path, local:true do |f| %>
      <div class="card">
      <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @post, :image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %></div>

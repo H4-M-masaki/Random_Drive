@@ -1,10 +1,28 @@
+
+
+
+
+
+
 <div class="container">
   <h1>マイページ編集</h1>
   <div class="row justify-content-md-center">
    <div class="col-md-auto">
+
+     <% if @user.errors.any? %>
+         <h3><%= @user.errors.count %>エラーが発生しました</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
     <%= form_with model: @user, url: public_user_path(@user.id), local:true do |f| %>
-     <div class="card">
-     <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @user, :profile_image, class: "card img-square", fallback: "no_image.jpg", size: "auto" %></div>
+     <div class="card h-100">
+      <div class="text-center">
+       <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @user, :profile_image, class: "card img-square rounded-circle", fallback: "no_image.jpg", size: "auto" %></div>
+      </div>
      <label>プロフィール画像</label>
      <%= f.attachment_field :profile_image, id: "profile_image" %>
      <div class="card-body">

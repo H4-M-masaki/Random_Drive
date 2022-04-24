@@ -18,20 +18,19 @@ class Public::DrivesController < ApplicationController
       @drive = Drive.find(params[:id])
    if @drive.update(drive_params)
       redirect_to public_drives_path
+    else
+      render:edit
    end
   end
 
   def create
-
     @drive = Drive.new(drive_params)
     @drive.user_id = current_user.id
     #@drives = Drive.find(drive_params)
-
     if @drive.save
       redirect_to public_drives_path
     else
-      @drives = Drive.all
-      render:index
+      render:new
     end
   end
 

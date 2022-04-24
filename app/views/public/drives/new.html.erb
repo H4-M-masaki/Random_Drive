@@ -1,5 +1,19 @@
 <div class="container">
  <div class="row row-cols-1">
+
+       <% if @drive.errors.any? %>
+         <h3><%= @drive.errors.count %>エラーが発生しました</h3>
+          <ul>
+            <% @drive.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+
+
+
+
   <h1>行きたい場所登録</h1>
   <%= form_with model: @drive, url: public_drives_path, local:true do |f| %>
    <%= f.text_field :address %>
