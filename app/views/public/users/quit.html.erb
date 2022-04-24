@@ -1,8 +1,17 @@
+<div class="container">
+  <div class="row">
+   <div class="col text-center">
+    <h1>本当に退会しますか？</h1>
+    <p>退会すると、会員登録情報や</p>
+    <p>これまでの投稿が閲覧できなくなります。</p>
+    <p>退会する場合は、「退会する」をクリックしてください。</p>
 
-<h1>本当に退会しますか？</h1>
-<p>退会すると、会員登録情報や</p>
-<p>これまでの購入履歴が閲覧できなくなります。</p>
-<p>退会する場合は、「退会する」をクリックしてください。</p>
-
-<%= link_to "退会しない", public_user_path(@user.id) %>
-<%= link_to "退会する", public_users_out_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+    <%= link_to public_user_path(@user.id) do %>
+    <button type="button" class="btn-sm btn-success">退会しない</button>
+    <% end %>
+    <%= link_to public_users_out_path, method: :patch, "data-confirm" => "本当に退会しますか？" do %>
+    <button type="button" class="btn-sm btn-danger">退会する</button>
+    <% end %>
+   </div>
+  </div>
+</div>

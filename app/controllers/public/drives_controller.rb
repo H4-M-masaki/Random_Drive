@@ -40,6 +40,8 @@ class Public::DrivesController < ApplicationController
     @drive.destroy
     redirect_to public_drives_path
   end
+  
+  
 
 
 

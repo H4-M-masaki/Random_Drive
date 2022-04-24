@@ -22,10 +22,12 @@
        </p>
       </div>
      </div>
+
      <% if @user == current_user %>
       <%= link_to edit_public_user_path(current_user) do %><br>
        <button type="button" class="btn-sm btn-info">プロフィール編集</button>
       <% end %>
+
       <h4>行きたい場所</h4>
       <% @drives.each do |drive| %>
        <%= drive.address %><br>
@@ -69,8 +71,6 @@
    </div>
   </div>
 </div>
-
-
 
 
 

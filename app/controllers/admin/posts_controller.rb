@@ -1,10 +1,11 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(6).reverse_order
   end
 
   def show
     @post = Post.find(params[:id])
+    
   end
 
 
