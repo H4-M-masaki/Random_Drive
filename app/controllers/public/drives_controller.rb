@@ -8,6 +8,7 @@ class Public::DrivesController < ApplicationController
 
   def index
     @drives = Drive.where(user_id: current_user.id)
+    
   end
 
   def edit
@@ -18,7 +19,7 @@ class Public::DrivesController < ApplicationController
       @drive = Drive.find(params[:id])
    if @drive.update(drive_params)
       redirect_to public_drives_path
-    else
+  　else
       render:edit
    end
   end

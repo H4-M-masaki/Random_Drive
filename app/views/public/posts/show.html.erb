@@ -1,7 +1,7 @@
 <div class="container">
   <h1>投稿詳細</h1>
   <div class="row row-cols-2">
-   <div class="col-md-auto">
+   <div class="col-md-6">
 
            <% if @post.errors.any? %>
          <h3><%= @post.errors.count %>エラーが発生しました</h3>
@@ -17,7 +17,7 @@
       <div class="card-img-top" alt="card-img-top"><%= attachment_image_tag @post, :image, format: 'jpeg', size: "auto" %></div>
        <div class="card-body">
         <h4 class="card-title"><%= @post.title %></h4>
-        <p class="card-text"><%=safe_join(@post.body.split("\n"),tag(:br)) %></p>
+        <p class="card-text"><%= @post.body %></p>
         <p class="card-text"><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></small></p>
        </div>
       </div>
@@ -94,9 +94,6 @@
    </div>
   </div>
 </div>
-
-
-
 
 
 

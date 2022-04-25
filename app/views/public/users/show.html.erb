@@ -18,10 +18,17 @@
        </h4>
        <p class="card-text">
         プロフィール<br>
-        <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+        <%= @user.introduction %>
        </p>
       </div>
      </div>
+
+
+
+
+
+
+
 
      <% if @user == current_user %>
       <%= link_to edit_public_user_path(current_user) do %><br>
@@ -71,10 +78,6 @@
    </div>
   </div>
 </div>
-
-
-
-
 
 
 
